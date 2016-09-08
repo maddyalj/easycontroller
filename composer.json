@@ -1,0 +1,21 @@
+{
+    "name": "maddyalj/easycontroller",
+    "description": "Controller trait to easily create Laravel restful controllers!",
+    "type": "library",
+    "require": {
+        "php": "^7.0",
+        "laravel/laravel": "^5.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maddy Alj",
+            "email": "maddy.alj@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MaddyAlj\\EasyController\\": "src/"
+        }
+    }
+}

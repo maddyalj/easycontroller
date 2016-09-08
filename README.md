@@ -1,2 +1,2 @@
 # easycontroller
-Controller class to easily create Laravel restful controllers!
+Controller trait to easily create Laravel restful controllers!

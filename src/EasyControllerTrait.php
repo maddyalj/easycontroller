@@ -40,6 +40,10 @@ trait EasyControllerTrait
 
     public function delete($id)
     {
-        return $this->model::find($id)->delete();
+        $object = $this->model::find($id);
+        if ($object->delete() === true) {
+            return $object->withTrashed()->find($id);
+        }
+        return $object;
     }
 }

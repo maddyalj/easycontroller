@@ -46,4 +46,42 @@ trait EasyControllerTrait
         }
         return $object;
     }
+
+    public function relationAll($id, $relation)
+    {
+        return $this->model::find($id)->$relation;
+    }
+
+    public function relationPaginate($id, $relation)
+    {
+        return $this->model::find($id)->$relation()->paginate($this->perPage);
+    }
+
+    public function relationFind($id, $relation, $relationId)
+    {
+        return $this->model::find($id)->$relation()->find($relationId);
+    }
+
+    public function relationCreate(Request $request, $id, $relation)
+    {
+        return $this->model::find($id)->$relation()->create($request->all());
+    }
+
+    public function relationUpdate(Request $request, $id, $relation, $relationId)
+    {
+        $object = $this->model::find($id)->$relation()->find($relationId);
+        if ($object->update($request->all()) === true) {
+            return $object->fresh();
+        }
+        return $object;
+    }
+
+    public function relationDelete($id, $relation, $relationId)
+    {
+        $object = $this->model::find($id)->$relation()->find($relationId);
+        if ($object->delete() === true) {
+            return $object->withTrashed()->find($id);
+        }
+        return $object;
+    }
 }
